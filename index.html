@@ -49,10 +49,18 @@
             height: 100%;
             display: none;
         }
+
+        Header,
+        a {
+            padding: 12px 8px;
+            color: white;
+            background-color: black;
+        }
     </style>
 </head>
 
 <body>
+    <Header><a href="index.html"> Test By Webpage</a> <a href="test.html">Test By Prompt</a></Header>
 
 
     <div id="form">
@@ -74,7 +82,7 @@
 
             let agentName = $("#agent").val();
             let hasChild = $("#noOfchildAgent").val();
-            if ((hasChild == 'y' || hasChild == "Y" || hasChild == 'n' || hasChild == "N" ) && (agentName!="") && (agentName!=" ")) {
+            if ((hasChild == 'y' || hasChild == "Y" || hasChild == 'n' || hasChild == "N") && (agentName != "") && (agentName != " ")) {
 
                 if (hasChild == 'n' || hasChild == 'N') {
                     let agentProfit = (reg_fee * 5) / 100;
@@ -95,18 +103,18 @@
 
 
                         let strTeam = members.split(",");
-                        let newStr =strTeam.filter(name => {
-                            if((name!='') && (name!=null) && (name!=' '))
-                            {
+                        let newStr = strTeam.filter(name => {
+                            if ((name != '') && (name != null) && (name != ' ')) {
                                 return name;
-                            }});
+                            }
+                        });
                         // console.log(newStr);
                         let each_Joinee_profit = (reg_fee * 5) / 100;
                         let agentProfit = (newStr.length) * (reg_fee * 10) / 100;
 
                         $("#result").html("<h3> Agent : " + agentName + " -- " + agentProfit + " </h3><br>");
                         for (let joinee of newStr) {
-                            
+
                             $("#result").append("<h3> New Joinee : " + joinee + " -- " + each_Joinee_profit + " </h3><br>");
 
                         }

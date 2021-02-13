@@ -6,10 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        Header,
+        a {
+            padding: 12px 8px;
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 
 <body>
+    <Header><a href="index.html"> Test By Webpage</a> <a href="text.html">Test By Prompt</a></Header>
     <h1>Team Data</h1>
+
 
 
     <script>
@@ -19,8 +29,8 @@
         let hasChild = prompt("Do you have any Child Member Enter Y or N");
 
 
-//checking user entered right iput or not.
-        if ((hasChild == 'y' || hasChild == "Y" || hasChild == 'n' || hasChild == "N" ) && (agentName!="") && (agentName!=" ")) {
+        //checking user entered right iput or not.
+        if ((hasChild == 'y' || hasChild == "Y" || hasChild == 'n' || hasChild == "N") && (agentName != "") && (agentName != " ")) {
 
             if (hasChild == 'n' || hasChild == 'N') {
 
@@ -37,14 +47,14 @@
                 let members = prompt("Enter Name of New Joinee");
 
                 let strTeam = members.split(",");
-                let newStr =strTeam.filter(name => {
-                            if((name!='') && (name!=null) && (name!=' '))
-                            {
-                                return name;
-                            }});
+                let newStr = strTeam.filter(name => {
+                    if ((name != '') && (name != null) && (name != ' ')) {
+                        return name;
+                    }
+                });
                 let each_Joinee_profit = (reg_fee * 5) / 100;
                 let agentProfit = (newStr.length) * (reg_fee * 10) / 100;
-                
+
                 alert(" Agent : " + agentName + " -- > " + agentProfit);
                 let teamArray = [];
                 teamArray.push("Agent Name-->" + agentName + " Profit Earned->" + agentProfit);
@@ -62,7 +72,7 @@
             }
         } else {
             alert('Please Enter valid input as Y Or N only and check Agent Name');
-            
+
         }
 
     </script>
