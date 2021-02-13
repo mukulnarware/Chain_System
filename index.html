@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        #form {
+            display: flex;
+            flex-flow: column;
+
+            height: 100%;
+            /* border: solid red;
+             */
+            background-color: rgb(220, 237, 237);
+            width: 50%;
+            /* justify-content: center; */
+            margin: auto;
+        }
+
+        input,
+        textarea {
+            height: 9px;
+            line-height: 2px;
+            font-size: 16px;
+            margin: 11px;
+            padding: 22px 9px;
+        }
+
+        #btn {
+            width: 20%;
+            padding: 6px 9px;
+            color: white;
+            background-color: black;
+            margin: 9px auto;
+        }
+
+        #joinee {
+            display: none;
+        }
+
+        #result {
+            /* border: solid aquamarine; */
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="form">
+
+        <input type="text" name="agent" id="agent" placeholder="Enter Agent Name">
+        <input type="text" name="noOfchildAgent" id="noOfchildAgent"
+            placeholder="Do you have any child member?, Enter y or N">
+        <textarea id="joinee" rows="5" cols="10" placeholder="Enter Team Members Name"></textarea>
+        <button id="btn" class="submit">Submit</button>
+        <span id="result"></span>
+
+
+    </div>
+
+    <script>
+        const reg_fee = 5000;
+
+        var button = $(".submit").on("click", () => {
+
+            let agentName = $("#agent").val();
+            let hasChild = $("#noOfchildAgent").val();
+            if (hasChild == 'y' || hasChild == "Y" || hasChild == 'n' || hasChild == "N") {
+
+                if (hasChild == 'n' || hasChild == 'N') {
+                    let agentProfit = (reg_fee * 5) / 100;
+                    $("#result").show();
+
+                    $("#result").html("<h3> Agent : " + agentName + " -- " + agentProfit + " </h3><br>");
+
+
+                } else {
+                    $("#joinee").show();
+                    $("#btn").removeClass("submit").addClass('calculate');
+
+
+                    $(".calculate").on("click", () => {
+
+                        $("#result").show();
+                        let members = $("#joinee").val();
+
+
+                        let strTeam = members.split(",");
+                        let each_Joinee_profit = (reg_fee * 5) / 100;
+                        let agentProfit = (strTeam.length) * (reg_fee * 10) / 100;
+
+                        $("#result").html("<h3> Agent : " + agentName + " -- " + agentProfit + " </h3><br>");
+                        for (let joinee of strTeam) {
+                            $("#result").append("<h3> New Joinee : " + joinee + " -- " + each_Joinee_profit + " </h3><br>");
+
+                        }
+
+
+
+                    });
+
+                }
+
+
+
+
+            } else {
+                alert('Please Enter valid input as Y Or N only ');
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
